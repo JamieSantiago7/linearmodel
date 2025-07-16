@@ -33,3 +33,13 @@ ARMGRIP <- data.frame(ARM = 88,GRIP = 94)
 ```{r}
 predict(simp,interval=c("prediction"))
 ```
+
+```{r}
+newGRIP <- lm(SIMS~ARM,data=data)
+plot(SIMS~ARM,data=data)
+abline(simp)
+summary.lm(simp)
+```
+```{r}
+predict(newGRIP,interval=c("prediction"))
+```
