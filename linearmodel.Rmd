@@ -72,9 +72,12 @@ predict(newGRIP,target,interval=c("prediction"))
 ```
 
 ```{r}
-halfARM <- lm(SIMS~ARM+GRIP,data=data)
-plot(SIMS~ARM+GRIP,data=data)
-abline(halfARM)
-summary.lm(halfARM)
+ARMGRIP_2<- lm(SIMS~ARM+GRIP,data=data)
+plot(SIMS~GRIP,data=data)
+abline(ARMGRIP_2)
+summary.lm(ARMGRIP_2)
 ```
 
+```{r}
+predict(ARMGRIP_2,target,interval=c("prediction"))
+```
