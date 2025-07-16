@@ -15,6 +15,25 @@ data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_str
 ```{r}
 data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt",sep="",header=TRUE) 
 ```
+
+```{r}
+basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
+```
+
+```{r}
+basicNN + geom_point() + ggtitle("SIMS~ARM")+ theme(plot.title = element_text(hjust = 0.5, size = 20))
+```
+
+```{r}
+cor(SIMS~ARM,data=data)
+```
+
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
+
+
 ```{r}
 simp <- lm(SIMS~ARM,data=data)
 plot(SIMS~ARM,data=data)
@@ -31,7 +50,15 @@ ARMGRIP <- data.frame(ARM = 88,GRIP = 94)
 ```
  
 ```{r}
-predict(simp,interval=c("prediction"))
+target<-data.frame(ARM=88, GRIP=94)
+```
+
+```{r}
+predict(simp,target,interval=c("prediction"))
+```
+
+```{r}
+predict(simp,target,interval=c("prediction"))
 ```
 
 ```{r}
@@ -41,5 +68,13 @@ abline(simp)
 summary.lm(simp)
 ```
 ```{r}
-predict(newGRIP,interval=c("prediction"))
+predict(newGRIP,target,interval=c("prediction"))
 ```
+
+```{r}
+halfARM <- lm(SIMS~ARM+GRIP,data=data)
+plot(SIMS~ARM+GRIP,data=data)
+abline(halfARM)
+summary.lm(halfARM)
+```
+
