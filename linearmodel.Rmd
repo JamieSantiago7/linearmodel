@@ -1,5 +1,7 @@
 ---
 title: "linearmodel"
+author: "Jamie Santiago"
+date: "Summer 2025"
 output: html_document
 ---
 
