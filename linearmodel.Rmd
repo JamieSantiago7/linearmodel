@@ -5,6 +5,13 @@ date: "Summer 2025"
 output: html_document
 ---
 
+```{r include=FALSE,echo=FALSE}
+require(knitr)
+require(tidyverse)
+require(tigerstats)
+data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt", sep="", header=TRUE)
+```
+
 ```{r}
 data <- read.csv(file="https://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt",sep="",header=TRUE) 
 ```
@@ -14,6 +21,15 @@ plot(SIMS~ARM,data=data)
 abline(simp)
 summary.lm(simp)
 ```
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
 
+```{r}
+ARMGRIP <- data.frame(ARM = 88,GRIP = 94)
+```
  
- 
+```{r}
+predict(simp,interval=c("prediction"))
+```
